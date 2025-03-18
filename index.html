@@ -181,15 +181,14 @@
     <!-- </div> -->
 
         <script>
-            fetch(
-                    "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWA-43ED200E-86C8-4385-B829-BA99B7D5CBE0&format=JSON"
-                )
+        const weatherUrl = "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWA-43ED200E-86C8-4385-B829-BA99B7D5CBE0&format=JSON";
+            fetch(weatherUrl)
                 .then(function (response) {
                         console.log('r',response)
                     return response;
                 })
                 .then(function (weather) {
-
+                    console.log('w',weather)
                     var location = weather.records.location
 
                     location.forEach((location, index) => {
