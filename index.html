@@ -13,18 +13,24 @@
             font-family: 'Noto Sans TC', sans-serif;
             box-sizing: content-box;
         }
+        #dtitle{
+            margin-top: 30px;
+            font-size: 1.5rem;
+            padding-left: 30px;
+        }
         .wrapper{
             display: flex;
             flex-wrap: wrap;
             justify-content: space-evenly;
-            padding-top: 60px;
+            padding-top: 10px;
             
         }
         .card {
             width: 350px;
             border: cadetblue 4px solid;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
             margin-bottom: 40px;
+            border-radius: 5px;
         }
 
         .card_top {
@@ -146,6 +152,7 @@
 </head>
 
 <body>
+    <p id="dtitle">datasetDescription</p>
     <div class="wrapper"></div>
     <!-- <div class="card"> -->
         <!-- <div class="card_top">
@@ -184,12 +191,11 @@
         const weatherUrl = "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWA-43ED200E-86C8-4385-B829-BA99B7D5CBE0&format=JSON";
             fetch(weatherUrl)
                 .then(function (response) {
-                        console.log('r',response)
-                    return response;
+                    return response.json();
                 })
-                .then(function (weather) {
-                    console.log('w',weather)
-                    var location = weather.records.location
+                .then(function (data) {
+                    document.getElementById('dtitle').innerHTML = data.records.datasetDescription
+                    var location = data.records.location
 
                     location.forEach((location, index) => {
 
